@@ -1,6 +1,10 @@
 source("sentiment.R")
 
-c = read.csv("/Users/amooreniemi/Documents/R/comments/comments_41713.csv")
+print("You're scoring for naughty words right now.")
+cat("File name of corpus (comments) including extension? ")
+a <- readLines(file("stdin"),1)
+c = read.csv(toString(sprintf("/Users/amooreniemi/Documents/R/comments/%s", a)))
+close(a)
 
 p = scan('/Users/amooreniemi/Documents/R/comments/good_med_words.txt', what='character', comment.char=';')
 
@@ -8,8 +12,11 @@ n = scan('/Users/amooreniemi/Documents/R/comments/swears.txt', what='character',
 
 #regex = scan('/Users/amooreniemi/Documents/R/comments/regex.txt', what='character', comment.char=';')
 
-result = score.sentiment(c$Comment, p, n)
+r = score.sentiment(c$Comment, p, n)
 
+summary(r)
+
+#use below for output
 #a <- gsub(" ", "_", date())
 #a <- gsub("/", "_", a)
 #a <- gsub(":", ".", a)
@@ -17,8 +24,8 @@ result = score.sentiment(c$Comment, p, n)
 
 #write.table(result$text, file=toString(sprintf("/Users/amooreniemi/Documents/R/comments/%s_result_comments.csv", a)), sep=",",row.names=F)
 #write.table(result$score, file=toString(sprintf("/Users/amooreniemi/Documents/R/comments/%s_result_score.csv", a)), sep=",",row.names=F)
-#write.table(april$User.ID, file=toString(sprintf("/Users/amooreniemi/Documents/R/comments/%s_result_users.csv", a)), sep=",",row.names=F)
+#write.table(month$User.ID, file=toString(sprintf("/Users/amooreniemi/Documents/R/comments/%s_result_users.csv", a)), sep=",",row.names=F)
 
 
 
-#grep("fuck+", april$Comment, value=TRUE)
+#grep("fuck+", c$Comment, value=TRUE)

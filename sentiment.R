@@ -26,8 +26,8 @@ score.sentiment = function(sentences, pos.words, neg.words, .progress='text')
         words = unlist(word.list)
  
         # compare our words to the dictionaries of positive & negative terms
-        pos.matches = match(words, pos.words)
-        neg.matches = match(words, neg.words)
+        pos.matches = fmatch(words, pos.words)
+        neg.matches = fmatch(words, neg.words)
      
         # match() returns the position of the matched term or NA
         # we just want a TRUE/FALSE:
