@@ -2,6 +2,7 @@ score.sentiment = function(sentences, pos.words, neg.words, .progress='text')
 {
     require(plyr)
     require(stringr)
+    require(fastmatch)
     
     # we got a vector of sentences. plyr will handle a list
     # or a vector as an "l" for us

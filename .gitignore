@@ -2,3 +2,6 @@
 *.csv
 /*.csv
 scratch/
+comments/
+output/
+data/
